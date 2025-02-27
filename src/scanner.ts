@@ -2,8 +2,6 @@ import fs from "fs";
 import path from "path";
 
 /*
-Explicação:
-
 - Varre o diretório de forma recursiva.
 - Filtra apenas arquivos relevantes (.js, .ts, .tsx, .jsx, .css, .scss, .json, imagens).
 - Garante que qualquer arquivo utilizável seja escaneado corretamente.
