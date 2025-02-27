@@ -24,6 +24,6 @@ export function analyzeProject(dir: string) {
     totalFiles: allFiles.size,
     usedFiles: referencedFiles.size,
     unusedFiles,
-    brokenImports,  // 🔹 Agora também retorna imports quebrados
+    brokenImports, 
   };
 }
