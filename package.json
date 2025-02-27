@@ -1,0 +1,15 @@
+{
+  "name": "clean-it",
+  "version": "1.0.0",
+  "description": "Ferramenta para limpar arquivos não utilizados em projetos React/Next.js",
+  "type": "module",
+  "bin": {
+    "clean-it": "./bin/cli.js"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
