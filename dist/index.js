@@ -1,15 +1,15 @@
 import { buildDependencyGraph } from "./graph.js";
 import { scanProject } from "./scanner.js";
 import path from "path";
+
 export function analyzeProject(dir) {
-    const files = scanProject(dir).map((file) => path.resolve(file)); // 🔹 Transforma arquivos analisados em absolutos
+    const files = scanProject(dir).map((file) => path.resolve(file)); 
     const graph = buildDependencyGraph(files);
     const allFiles = new Set(files);
     const referencedFiles = new Set();
-    // 🔹 Agora verificamos corretamente os arquivos referenciados
     Object.values(graph).forEach((deps) => {
         deps.forEach((dep) => {
-            const resolvedDep = path.resolve(dep); // 🔹 Transforma dependência em absoluta antes da comparação
+            const resolvedDep = path.resolve(dep); 
             if (allFiles.has(resolvedDep)) {
                 referencedFiles.add(resolvedDep);
             }

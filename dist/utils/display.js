@@ -5,7 +5,7 @@ export function showUnusedFiles(categories) {
         if (files.length > 0) {
             console.log(chalk.yellow(`📂 ${category.toUpperCase()} (${files.length}):`));
             files.forEach((file) => console.log(chalk.red(`  ❌ ${file}`)));
-            console.log(""); // Espaço entre categorias
+            console.log(""); 
         }
     });
 }
