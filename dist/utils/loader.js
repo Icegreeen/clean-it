@@ -11,6 +11,6 @@ export async function showLoading(message = "Processando...") {
             clearInterval(interval);
             process.stdout.write(`\r✅ ${chalk.green("Análise concluída!       \n")}`);
             resolve(true);
-        }, 5000);
+        }, 3000);
     });
 }

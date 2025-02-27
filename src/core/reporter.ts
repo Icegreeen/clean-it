@@ -1,3 +1,5 @@
+// # Report generation
+
 import chalk from "chalk";
 
 export function printReport(report: any) {

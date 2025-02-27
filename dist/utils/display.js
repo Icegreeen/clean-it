@@ -5,7 +5,7 @@ export function showUnusedFiles(categories) {
         if (files.length > 0) {
             console.log(chalk.yellow(`📂 ${category.toUpperCase()} (${files.length}):`));
             files.forEach((file) => console.log(chalk.red(`  ❌ ${file}`)));
-            console.log(""); 
+            console.log("");
         }
     });
 }
@@ -21,4 +21,15 @@ export function showSummary(totalFiles, unusedFiles) {
         .toString()
         .padEnd(12)}% |`));
     console.log("\n");
+}
+export function showBrokenImports(brokenImports) {
+    console.log(chalk.yellow("\n🔎 Checking for broken imports...\n"));
+    if (brokenImports.length === 0) {
+        console.log(chalk.green("✅ No broken imports found!\n"));
+    }
+    else {
+        console.log(chalk.bgRed("\n🚨 Broken Imports Detected:\n"));
+        brokenImports.forEach((imp) => console.log(chalk.red(`  ❌ ${imp}`)));
+        console.log("");
+    }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { analyzeProject } from "../index.js";
-import { showSummary, showUnusedFiles } from "../utils/display.js";
+import { showSummary, showUnusedFiles, showBrokenImports } from "../utils/display.js";
 import { showLoading } from "../utils/loader.js";
 
 const targetPath = process.argv[2] || ".";
@@ -9,7 +9,7 @@ const targetPath = process.argv[2] || ".";
 await showLoading("Analisando o projeto...");
 
 const report = analyzeProject(targetPath);
-const { totalFiles, unusedFiles } = report;
+const { totalFiles, unusedFiles, brokenImports } = report;
 
 const categories = {
   components: [],
@@ -29,6 +29,8 @@ unusedFiles.forEach((file) => {
   else categories.other.push(file);
 });
 
-
 showUnusedFiles(categories);
+
+showBrokenImports(brokenImports);
+
 showSummary(totalFiles, unusedFiles);

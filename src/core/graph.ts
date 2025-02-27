@@ -1,8 +1,11 @@
+//# Construction of the dependency graph
+
 import fs from "fs";
 import path from "path";
 
 export function buildDependencyGraph(files: string[]) {
   const dependencies: Record<string, Set<string>> = {};
+  const brokenImports: string[] = []; 
 
   files.forEach((file) => {
     const content = fs.readFileSync(file, "utf-8");
@@ -25,15 +28,16 @@ export function buildDependencyGraph(files: string[]) {
           else if (fs.existsSync(resolvedPath + ".js")) resolvedPath += ".js";
           else if (fs.existsSync(resolvedPath + "/index.ts")) resolvedPath += "/index.ts";
           else if (fs.existsSync(resolvedPath + "/index.tsx")) resolvedPath += "/index.tsx";
-          else return;
+          else {
+            brokenImports.push(`${file} → ${importedPath}`);
+            return;
+          }
         }
 
         dependencies[file].add(resolvedPath);
-
-        console.log(`🔗 ${file} IMPORTA ${resolvedPath}`);
       }
     });
   });
 
-  return dependencies;
+  return { dependencies, brokenImports };
 }

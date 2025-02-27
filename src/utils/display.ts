@@ -39,3 +39,15 @@ export function showSummary(totalFiles: number, unusedFiles: string[]) {
 
   console.log("\n");
 }
+
+export function showBrokenImports(brokenImports: string[]) {
+  console.log(chalk.yellow("\n🔎 Checking for broken imports...\n"));
+
+  if (brokenImports.length === 0) {
+    console.log(chalk.green("✅ No broken imports found!\n"));
+  } else {
+    console.log(chalk.bgRed("\n🚨 Broken Imports Detected:\n"));
+    brokenImports.forEach((imp) => console.log(chalk.red(`  ❌ ${imp}`)));
+    console.log(""); 
+  }
+}
